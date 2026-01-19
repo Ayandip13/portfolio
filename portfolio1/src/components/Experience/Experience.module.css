@@ -1,0 +1,172 @@
+.experience {
+  background: var(--bg-base);
+  position: relative;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+}
+
+.timeline {
+  position: relative;
+  padding: var(--spacing-xl) 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--electric-blue),
+    var(--cyber-purple),
+    transparent
+  );
+  transform: translateX(-50%);
+}
+
+.timelineItem {
+  position: relative;
+  margin-bottom: var(--spacing-3xl);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+
+.timelineItem:nth-child(odd) .card {
+  grid-column: 1;
+  text-align: right;
+}
+
+.timelineItem:nth-child(even) .card {
+  grid-column: 3;
+  text-align: left;
+}
+
+.timelineDot {
+  grid-column: 2;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--electric-blue);
+  box-shadow: 0 0 20px var(--electric-blue);
+  border: 4px solid var(--bg-base);
+  z-index: 2;
+}
+
+.card {
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-smooth);
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 217, 255, 0.2);
+}
+
+.period {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 217, 255, 0.1);
+  border: 1px solid rgba(0, 217, 255, 0.3);
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--electric-blue);
+  margin-bottom: var(--spacing-md);
+}
+
+.role {
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-xs);
+  color: var(--text-primary);
+}
+
+.company {
+  font-size: 1.125rem;
+  color: var(--cyber-purple);
+  margin-bottom: var(--spacing-md);
+  font-weight: 600;
+}
+
+.description {
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.6;
+}
+
+.achievements {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.achievements li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.timelineItem:nth-child(odd) .achievements li {
+  padding-left: 0;
+  padding-right: 1.5rem;
+}
+
+.achievements li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: var(--electric-blue);
+  font-weight: bold;
+}
+
+.timelineItem:nth-child(odd) .achievements li::before {
+  left: auto;
+  right: 0;
+}
+
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timelineItem {
+    grid-template-columns: auto 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .timelineItem:nth-child(odd) .card,
+  .timelineItem:nth-child(even) .card {
+    grid-column: 2;
+    text-align: left;
+  }
+
+  .timelineDot {
+    grid-column: 1;
+  }
+
+  .timelineItem:nth-child(odd) .achievements li {
+    padding-left: 1.5rem;
+    padding-right: 0;
+  }
+
+  .timelineItem:nth-child(odd) .achievements li::before {
+    left: 0;
+    right: auto;
+  }
+}
