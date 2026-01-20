@@ -51,68 +51,15 @@ export const Contact = () => {
                 </motion.p>
 
                 <div className={styles.content}>
-                    {/* Contact Form */}
-                    <motion.form
-                        className={`${styles.form} glass`}
-                        onSubmit={handleSubmit}
-                        variants={fadeInUp}
-                    >
-                        <div className={styles.inputGroup}>
-                            <input
-                                type="text"
-                                id="name"
-                                value={formData.name}
-                                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                onFocus={() => setFocusedField('name')}
-                                onBlur={() => setFocusedField(null)}
-                                required
-                                className={focusedField === 'name' || formData.name ? styles.filled : ''}
-                            />
-                            <label htmlFor="name">Your Name</label>
-                        </div>
-
-                        <div className={styles.inputGroup}>
-                            <input
-                                type="email"
-                                id="email"
-                                value={formData.email}
-                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                onFocus={() => setFocusedField('email')}
-                                onBlur={() => setFocusedField(null)}
-                                required
-                                className={focusedField === 'email' || formData.email ? styles.filled : ''}
-                            />
-                            <label htmlFor="email">Your Email</label>
-                        </div>
-
-                        <div className={styles.inputGroup}>
-                            <textarea
-                                id="message"
-                                rows={5}
-                                value={formData.message}
-                                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                onFocus={() => setFocusedField('message')}
-                                onBlur={() => setFocusedField(null)}
-                                required
-                                className={focusedField === 'message' || formData.message ? styles.filled : ''}
-                            />
-                            <label htmlFor="message">Your Message</label>
-                        </div>
-
-                        <motion.button
-                            type="submit"
-                            className={styles.submitBtn}
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                        >
-                            Send Message
-                        </motion.button>
-                    </motion.form>
-
                     {/* Social Links */}
                     <motion.div className={styles.social} variants={fadeInUp}>
                         <h3 className={styles.socialTitle}>Find me on</h3>
-                        <div className={styles.socialGrid}>
+                        <div
+                            className={styles.socialGrid}
+                            style={{
+                                display: 'flex',
+                            }}
+                        >
                             {social.map((link, index) => {
                                 const Icon = iconMap[link.icon];
                                 return (
