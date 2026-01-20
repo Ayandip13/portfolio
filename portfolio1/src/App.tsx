@@ -29,7 +29,7 @@ function App() {
         color: 'var(--text-tertiary)',
         fontSize: '0.875rem'
       }}>
-        <p>© 2026 Ayandip Paul. Built with React, Framer Motion & GSAP</p>
+        <p>© 2026 Ayandip Paul. Built with React</p>
       </footer>
     </div>
   );

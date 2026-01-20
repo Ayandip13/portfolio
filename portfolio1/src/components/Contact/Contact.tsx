@@ -1,5 +1,5 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaDribbble } from 'react-icons/fa';
 import { portfolioData } from '../../data/portfolio';
 import { fadeInUp, staggerContainer } from '../../utils/animations';
@@ -18,24 +18,12 @@ export const Contact = () => {
     const isInView = useInView(ref, { once: true, margin: '-100px' });
     const { social } = portfolioData;
 
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: '',
-    });
-
-    const [focusedField, setFocusedField] = useState<string | null>(null);
-
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        // Handle form submission (placeholder)
-        console.log('Form submitted:', formData);
-        alert('Thank you for your message! (This is a demo)');
-        setFormData({ name: '', email: '', message: '' });
-    };
-
     return (
         <section className={styles.contact} id="contact" ref={ref}>
+            {/* Decorative Background Orbs */}
+            <div className={styles.backgroundOrb1}></div>
+            <div className={styles.backgroundOrb2}></div>
+
             <motion.div
                 className={styles.container}
                 variants={staggerContainer}
@@ -50,36 +38,38 @@ export const Contact = () => {
                     Have a project in mind? Let's create something amazing together.
                 </motion.p>
 
-                <div className={styles.content}>
-                    {/* Social Links */}
-                    <motion.div className={styles.social} variants={fadeInUp}>
-                        <h3 className={styles.socialTitle}>Find me on</h3>
-                        <div
-                            className={styles.socialGrid}
-                            style={{
-                                display: 'flex',
-                            }}
-                        >
-                            {social.map((link, index) => {
-                                const Icon = iconMap[link.icon];
-                                return (
-                                    <motion.a
-                                        key={index}
-                                        href={link.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className={styles.socialLink}
-                                        whileHover={{ y: -5, scale: 1.1 }}
-                                        whileTap={{ scale: 0.95 }}
-                                    >
+                {/* Social Links */}
+                <motion.div className={styles.social} variants={fadeInUp}>
+                    <h3 className={styles.socialTitle}>Connect With Me</h3>
+                    <p className={styles.socialSubtitle}>Let's stay connected on social media</p>
+                    <div className={styles.socialGrid}>
+                        {social.map((link, index) => {
+                            const Icon = iconMap[link.icon];
+                            return (
+                                <motion.a
+                                    key={index}
+                                    href={link.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={styles.socialLink}
+                                    whileHover={{ y: -5, scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
+                                    transition={{ delay: index * 0.1 }}
+                                >
+                                    <div className={styles.iconWrapper}>
                                         {Icon && <Icon />}
-                                        <span>{link.name}</span>
-                                    </motion.a>
-                                );
-                            })}
-                        </div>
-                    </motion.div>
-                </div>
+                                    </div>
+                                    <div className={styles.linkContent}>
+                                        <span className={styles.linkName}>{link.name}</span>
+                                        <span className={styles.linkHint}>Follow me</span>
+                                    </div>
+                                </motion.a>
+                            );
+                        })}
+                    </div>
+                </motion.div>
             </motion.div>
         </section>
     );
