@@ -68,9 +68,9 @@
 
 /* Social Section */
 .social {
-  max-width: 1100px;
+  max-width: 950px;
   margin: 0 auto;
-  padding: var(--spacing-3xl);
+  padding: var(--spacing-2xl) var(--spacing-3xl);
   border-radius: var(--radius-xl);
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(20px);
@@ -89,6 +89,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-align: center;
 }
 
 .socialSubtitle {
@@ -96,20 +97,23 @@
   color: var(--text-tertiary);
   margin-bottom: var(--spacing-2xl);
   line-height: 1.5;
+  text-align: center;
 }
 
 .socialGrid {
-  display: flex;
-  flex-direction: row;
-  gap: var(--spacing-xl);
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-lg);
+  width: 100%;
 }
 
 .socialLink {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: var(--spacing-md);
-  padding: var(--spacing-lg) var(--spacing-xl);
+  padding: var(--spacing-xl);
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-lg);
@@ -118,10 +122,7 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  flex: 0 1 auto;
-  max-width: 220px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  min-height: 140px;
 }
 
 .socialLink::before {
@@ -143,17 +144,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 55px;
-  height: 55px;
-  border-radius: var(--radius-md);
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-lg);
   background: rgba(0, 217, 255, 0.1);
   border: 1px solid rgba(0, 217, 255, 0.2);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  padding: 15px;
+  flex-shrink: 0;
 }
 
 .iconWrapper svg {
-  font-size: 1.6rem;
+  font-size: 1.75rem;
   color: var(--electric-blue);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -162,37 +163,40 @@
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  align-items: center;
+  text-align: center;
 }
 
 .linkName {
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 700;
   color: var(--text-primary);
   transition: all 0.3s;
   white-space: nowrap;
 }
 
 .linkHint {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--text-tertiary);
   transition: all 0.3s;
   white-space: nowrap;
+  opacity: 0.8;
 }
 
 .socialLink:hover {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(0, 217, 255, 0.3);
   box-shadow: 
-    0 8px 24px rgba(0, 217, 255, 0.15),
+    0 8px 24px rgba(0, 217, 255, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  transform: translateX(5px);
+  transform: translateY(-5px);
 }
 
 .socialLink:hover .iconWrapper {
   background: rgba(0, 217, 255, 0.2);
   border-color: var(--electric-blue);
-  transform: scale(1);
-  box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.4);
 }
 
 .socialLink:hover .iconWrapper svg {
@@ -216,7 +220,7 @@
   }
 
   .social {
-    padding: var(--spacing-2xl);
+    padding: var(--spacing-xl);
   }
 
   .backgroundOrb1,

@@ -134,7 +134,7 @@ My approach combines technical excellence with creative problem-solving, always 
       id: '1',
       company: 'Weavers web solutions pvt ltd',
       role: 'Software Developer Intern',
-      period: '2025(2 june - 2025 9 september)',
+      period: '2025(2 june - 9 september)',
       description: '',
       achievements: [
         'Contributed to 2 client projects',
