@@ -3,13 +3,30 @@ import { useRef, useState } from 'react';
 import { portfolioData } from '../../data/portfolio';
 import { fadeInUp, staggerContainer } from '../../utils/animations';
 import styles from './Skills.module.css';
-import * as FaIcons from 'react-icons/fa';
-import * as SiIcons from 'react-icons/si';
+import { FaReact, FaJsSquare, FaHtml5, FaCss3Alt, FaNodeJs, FaGitAlt, FaCode, FaDatabase } from 'react-icons/fa';
+import { SiTypescript, SiRedux, SiReact, SiTailwindcss, SiMongodb, SiFirebase, SiPostman, SiExpress } from 'react-icons/si';
 
-// Icon mapper
-const iconMap: Record<string, any> = {
-    ...FaIcons,
-    ...SiIcons,
+// Helper function to get the icon component
+const getIconComponent = (iconName: string) => {
+    const icons: Record<string, any> = {
+        FaReact,
+        FaJsSquare,
+        FaHtml5,
+        FaCss3Alt,
+        FaNodeJs,
+        FaGitAlt,
+        FaCode,
+        FaDatabase,
+        SiTypescript,
+        SiRedux,
+        SiReact,
+        SiTailwindcss,
+        SiMongodb,
+        SiFirebase,
+        SiPostman,
+        SiExpress,
+    };
+    return icons[iconName];
 };
 
 export const Skills = () => {
@@ -54,7 +71,8 @@ export const Skills = () => {
                 {/* Skills Grid */}
                 <motion.div className={styles.skillsGrid} variants={staggerContainer}>
                     {filteredSkills.map((skill, index) => {
-                        const IconComponent = iconMap[skill.icon];
+                        const IconComponent = getIconComponent(skill.icon);
+                        console.log('Skill:', skill.name, 'IconName:', skill.icon, 'Found:', !!IconComponent);
 
                         return (
                             <motion.div

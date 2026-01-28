@@ -3,6 +3,35 @@ import { useRef, useState } from 'react';
 import { portfolioData, type Project } from '../../data/portfolio';
 import { fadeInUp, staggerContainer } from '../../utils/animations';
 import styles from './Projects.module.css';
+import * as FaIcons from 'react-icons/fa';
+import * as SiIcons from 'react-icons/si';
+
+// Icon mapper (same approach as Skills component)
+const iconMap: Record<string, any> = {
+    ...FaIcons,
+    ...SiIcons,
+};
+
+// Technology to icon name mapper
+const techIconMap: Record<string, string> = {
+    'React Native': 'SiReact',
+    'React': 'FaReact',
+    'TypeScript': 'SiTypescript',
+    'JavaScript': 'FaJs',
+    'Redux Toolkit': 'SiRedux',
+    'Redux-Toolkit': 'SiRedux',
+    'Zustand': 'SiReact',
+    'Express.js': 'SiExpress',
+    'Express': 'SiExpress',
+    'MongoDB': 'SiMongodb',
+    'MMKV': 'FaDatabase',
+    'Node.js': 'FaNodeJs',
+    'Firebase': 'SiFirebase',
+    'Tailwind CSS': 'SiTailwindcss',
+    'HTML': 'FaHtml5',
+    'CSS': 'FaCss3Alt',
+    'Git': 'FaGitAlt',
+};
 
 export const Projects = () => {
     const ref = useRef(null);
@@ -45,11 +74,17 @@ export const Projects = () => {
                                 <p className={styles.projectDescription}>{project.description}</p>
 
                                 <div className={styles.techTags}>
-                                    {project.technologies.slice(0, 3).map((tech) => (
-                                        <span key={tech} className={styles.tag}>
-                                            {tech}
-                                        </span>
-                                    ))}
+                                    {project.technologies.slice(0, 3).map((tech) => {
+                                        const iconName = techIconMap[tech];
+                                        const IconComponent = iconName ? iconMap[iconName] : null;
+                                        console.log('Tech:', tech, 'IconName:', iconName, 'Icon:', IconComponent);
+                                        return (
+                                            <span key={tech} className={styles.tag}>
+                                                {IconComponent && <IconComponent className={styles.techIcon} />}
+                                                {tech}
+                                            </span>
+                                        );
+                                    })}
                                     {project.technologies.length > 3 && (
                                         <span className={styles.tag}>+{project.technologies.length - 3}</span>
                                     )}
@@ -87,11 +122,16 @@ export const Projects = () => {
                         <div className={styles.modalTech}>
                             <h4>Technologies</h4>
                             <div className={styles.techTags}>
-                                {selectedProject.technologies.map((tech) => (
-                                    <span key={tech} className={styles.tag}>
-                                        {tech}
-                                    </span>
-                                ))}
+                                {selectedProject.technologies.map((tech) => {
+                                    const iconName = techIconMap[tech];
+                                    const IconComponent = iconName ? iconMap[iconName] : null;
+                                    return (
+                                        <span key={tech} className={styles.tag}>
+                                            {IconComponent && <IconComponent className={styles.techIcon} />}
+                                            {tech}
+                                        </span>
+                                    );
+                                })}
                             </div>
                         </div>
 

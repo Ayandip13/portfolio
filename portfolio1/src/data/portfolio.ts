@@ -58,14 +58,14 @@ My approach combines technical excellence with creative problem-solving, always 
   skills: [
     // Frontend
     { name: 'React Native', category: 'Mobile' as const, proficiency: 75, icon: 'FaReact' },
-    { name: 'JavaScript', category: 'Frontend' as const, proficiency: 75, icon: 'FaJs' },
+    { name: 'JavaScript', category: 'Frontend' as const, proficiency: 75, icon: 'FaJsSquare' },
     { name: 'TypeScript', category: 'Mobile' as const, proficiency: 50, icon: 'SiTypescript' },
     { name: 'React', category: 'Frontend' as const, proficiency: 60, icon: 'FaReact' },
     { name: 'Redux-ToolKit', category: 'Mobile' as const, proficiency: 55, icon: 'SiRedux' },
     { name: 'Zustand', category: 'Mobile' as const, proficiency: 50, icon: 'SiReact' },
     { name: 'Tailwind CSS', category: 'Frontend' as const, proficiency: 50, icon: 'SiTailwindcss' },
     { name: "HTML", category: 'Frontend' as const, proficiency: 60, icon: 'FaHtml5' },
-    { name: "CSS", category: 'Frontend' as const, proficiency: 60, icon: 'FaCss3' },
+    { name: "CSS", category: 'Frontend' as const, proficiency: 60, icon: 'FaCss3Alt' },
     { name: 'Reanimated', category: 'Mobile' as const, proficiency: 40, icon: 'FaReact' },
 
     // Backend
@@ -96,7 +96,7 @@ My approach combines technical excellence with creative problem-solving, always 
         'MongoDB'
       ],
       category: 'Mobile Application',
-      githubUrl: 'https://github.com',
+      githubUrl: 'https://github.com/Ayandip13/e-commerce',
       featured: true,
     },
     {
@@ -107,18 +107,18 @@ My approach combines technical excellence with creative problem-solving, always 
       image: '/projects/project2.png',
       technologies: ['React Native', 'TypeScript', 'Zustand', 'Express', 'MongoDB'],
       category: 'Mobile Application',
-      githubUrl: 'https://github.com',
+      githubUrl: 'https://github.com/Ayandip13/Bookosaurs',
       featured: true,
     },
     {
       id: '3',
       title: 'News App',
       description: 'Modern news app',
-      longDescription: 'Modern news app with AI-powered insights.',
+      longDescription: "It's a news app using NewsAPI and modern UI.",
       image: '/projects/project3.png',
       technologies: ['React Native', 'TypeScript', 'MMKV'],
       category: 'Mobile Application',
-      githubUrl: 'https://github.com',
+      githubUrl: 'https://github.com/Ayandip13/insiderProto',
       featured: true,
     },
   ],
