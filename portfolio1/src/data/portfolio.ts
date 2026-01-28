@@ -48,9 +48,9 @@ export const portfolioData = {
 
   // About Section
   about: {
-    bio: `I'm a passionate software developer who loves creating beautiful, functional, and user-friendly applications. With expertise in modern mobile and web technologies, I transform ideas into reality through clean code and innovative design.
+    bio: `I’m a software developer who enjoys building clean, simple, and user-friendly applications. I like turning ideas into real products using modern mobile and web technologies.
 
-My approach combines technical excellence with creative problem-solving, always pushing the boundaries of what's possible in digital experiences.`,
+I focus on writing readable code, solving real problems, and creating experiences that feel smooth and intuitive for users.`,
     avatar: '/avatar.png', // Placeholder - will be generated
   },
 

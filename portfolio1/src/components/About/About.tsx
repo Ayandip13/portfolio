@@ -38,7 +38,7 @@ export const About = () => {
                         <p className={styles.bio}>{about.bio}</p>
                     </motion.div>
 
-                    <motion.div className={styles.techStack} variants={fadeInUp}>
+                    {/* <motion.div className={styles.techStack} variants={fadeInUp}>
                         <h3 className={styles.subtitle}>Tech Stack That I've Used</h3>
                         <div className={styles.techGrid}>
                             {displaySkills.map((skill, index) => {
@@ -58,7 +58,7 @@ export const About = () => {
                                 );
                             })}
                         </div>
-                    </motion.div>
+                    </motion.div> */}
                 </div>
             </motion.div>
         </section>
