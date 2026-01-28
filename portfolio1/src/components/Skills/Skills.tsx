@@ -3,6 +3,14 @@ import { useRef, useState } from 'react';
 import { portfolioData } from '../../data/portfolio';
 import { fadeInUp, staggerContainer } from '../../utils/animations';
 import styles from './Skills.module.css';
+import * as FaIcons from 'react-icons/fa';
+import * as SiIcons from 'react-icons/si';
+
+// Icon mapper
+const iconMap: Record<string, any> = {
+    ...FaIcons,
+    ...SiIcons,
+};
 
 export const Skills = () => {
     const ref = useRef(null);
@@ -45,33 +53,30 @@ export const Skills = () => {
 
                 {/* Skills Grid */}
                 <motion.div className={styles.skillsGrid} variants={staggerContainer}>
-                    {filteredSkills.map((skill, index) => (
-                        <motion.div
-                            key={skill.name}
-                            className={`${styles.skillCard} glass`}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                            transition={{ delay: index * 0.05, duration: 0.5 }}
-                            whileHover={{ y: -10, scale: 1.02 }}
-                        >
-                            <div className={styles.skillHeader}>
-                                <h4 className={styles.skillName}>{skill.name}</h4>
-                                <span className={styles.skillCategory}>{skill.category}</span>
-                            </div>
+                    {filteredSkills.map((skill, index) => {
+                        const IconComponent = iconMap[skill.icon];
 
-                            {/* Progress Bar */}
-                            <div className={styles.progressBar}>
-                                <motion.div
-                                    className={styles.progressFill}
-                                    initial={{ width: 0 }}
-                                    animate={isInView ? { width: `${skill.proficiency}%` } : { width: 0 }}
-                                    transition={{ delay: index * 0.05 + 0.3, duration: 1 }}
-                                />
-                            </div>
+                        return (
+                            <motion.div
+                                key={skill.name}
+                                className={`${styles.skillCard} glass`}
+                                initial={{ opacity: 0, y: 20, rotateX: -15 }}
+                                animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : { opacity: 0, y: 20, rotateX: -15 }}
+                                transition={{ delay: index * 0.05, duration: 0.6, type: 'spring' }}
+                                whileHover={{ y: -12, scale: 1.05, rotateY: 5 }}
+                            >
+                                <div className={styles.iconWrapper}>
+                                    {IconComponent && <IconComponent className={styles.skillIcon} />}
+                                    <div className={styles.iconGlow}></div>
+                                </div>
 
-                            <span className={styles.proficiency}>{skill.proficiency}%</span>
-                        </motion.div>
-                    ))}
+                                <div className={styles.skillContent}>
+                                    <h4 className={styles.skillName}>{skill.name}</h4>
+                                    <span className={styles.skillCategory}>{skill.category}</span>
+                                </div>
+                            </motion.div>
+                        );
+                    })}
                 </motion.div>
             </motion.div>
         </section>

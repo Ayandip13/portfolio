@@ -62,11 +62,11 @@ My approach combines technical excellence with creative problem-solving, always 
     { name: 'TypeScript', category: 'Mobile' as const, proficiency: 50, icon: 'SiTypescript' },
     { name: 'React', category: 'Frontend' as const, proficiency: 60, icon: 'FaReact' },
     { name: 'Redux-ToolKit', category: 'Mobile' as const, proficiency: 55, icon: 'SiRedux' },
-    { name: 'Zustand', category: 'Mobile' as const, proficiency: 50, icon: 'SiZustand' },
+    { name: 'Zustand', category: 'Mobile' as const, proficiency: 50, icon: 'SiReact' },
     { name: 'Tailwind CSS', category: 'Frontend' as const, proficiency: 50, icon: 'SiTailwindcss' },
     { name: "HTML", category: 'Frontend' as const, proficiency: 60, icon: 'FaHtml5' },
     { name: "CSS", category: 'Frontend' as const, proficiency: 60, icon: 'FaCss3' },
-    { name: 'Reanimated', category: 'Mobile' as const, proficiency: 40, icon: 'SiReanimated' },
+    { name: 'Reanimated', category: 'Mobile' as const, proficiency: 40, icon: 'FaReact' },
 
     // Backend
     { name: 'Node.js', category: 'Backend' as const, proficiency: 60, icon: 'FaNodeJs' },
@@ -74,13 +74,8 @@ My approach combines technical excellence with creative problem-solving, always 
     { name: 'Firebase', category: 'Backend' as const, proficiency: 40, icon: 'SiFirebase' },
 
     // Tools
-    {
-      name: 'Git',
-      category: 'Tools' as const,
-      proficiency: 60,
-      icon: 'FaGitAlt'
-    },
-    { name: 'VS Code', category: 'Tools' as const, proficiency: 60, icon: 'SiVisualstudiocode' },
+    { name: 'Git', category: 'Tools' as const, proficiency: 60, icon: 'FaGitAlt' },
+    { name: 'VS Code', category: 'Tools' as const, proficiency: 60, icon: 'FaCode' },
     { name: 'Postman', category: 'Tools' as const, proficiency: 60, icon: 'SiPostman' }
   ],
 
@@ -134,7 +129,7 @@ My approach combines technical excellence with creative problem-solving, always 
       id: '1',
       company: 'Weavers web solutions pvt ltd',
       role: 'Software Developer Intern',
-      period: '2025(2 june - 9 september)',
+      period: '2025(2 june - 9 december)',
       description: '',
       achievements: [
         'Contributed to 2 client projects',
