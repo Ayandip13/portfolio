@@ -214,13 +214,77 @@
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .cardImage {
+    height: 180px;
+  }
+
+  .projectTitle {
+    font-size: 1.25rem;
+  }
+
+  .projectDescription {
+    font-size: 0.9rem;
   }
 
   .modal {
     padding: var(--spacing-lg);
+    max-height: 85vh;
+  }
+
+  .modalTitle {
+    font-size: 1.75rem;
+  }
+
+  .modalDescription {
+    font-size: 1rem;
   }
 
   .modalLinks {
     flex-direction: column;
+  }
+
+  .link {
+    padding: 0.75rem 1.5rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    gap: var(--spacing-md);
+  }
+
+  .cardContent {
+    padding: var(--spacing-md);
+  }
+
+  .projectTitle {
+    font-size: 1.125rem;
+  }
+
+  .projectDescription {
+    font-size: 0.875rem;
+  }
+
+  .tag {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.7rem;
+  }
+
+  .modal {
+    padding: var(--spacing-md);
+  }
+
+  .closeBtn {
+    width: 35px;
+    height: 35px;
+    font-size: 1.25rem;
+  }
+
+  .modalTitle {
+    font-size: 1.5rem;
   }
 }

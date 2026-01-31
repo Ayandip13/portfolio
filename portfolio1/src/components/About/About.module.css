@@ -90,6 +90,22 @@
 }
 
 @media (max-width: 768px) {
+  .about {
+    padding: var(--spacing-2xl) var(--spacing-md);
+  }
+
+  .content {
+    gap: var(--spacing-xl);
+  }
+
+  .card {
+    padding: var(--spacing-xl);
+  }
+
+  .bio {
+    font-size: 1.125rem;
+  }
+
   .techGrid {
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: var(--spacing-md);
@@ -101,5 +117,33 @@
 
   .techIcon {
     font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: var(--spacing-lg);
+  }
+
+  .bio {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .techGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-sm);
+  }
+
+  .techItem {
+    padding: var(--spacing-sm);
+  }
+
+  .techIcon {
+    font-size: 1.75rem;
+  }
+
+  .techName {
+    font-size: 0.75rem;
   }
 }

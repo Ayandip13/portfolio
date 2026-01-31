@@ -270,30 +270,31 @@
   }
 
   .socialGrid {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-md);
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
   }
 
   .socialLink {
-    padding: var(--spacing-lg);
-    min-height: 120px;
+    padding: var(--spacing-md);
+    min-height: 110px;
+    gap: var(--spacing-sm);
   }
 
   .iconWrapper {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
   }
 
   .iconWrapper svg {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   .linkName {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
   }
 
   .linkHint {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 }
 
@@ -306,21 +307,30 @@
     font-size: 1.25rem;
   }
 
+  .socialGrid {
+    gap: 0.5rem;
+  }
+
   .socialLink {
-    padding: var(--spacing-md);
-    min-height: 110px;
+    padding: var(--spacing-sm);
+    min-height: 100px;
+    gap: 0.5rem;
   }
 
   .iconWrapper {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .iconWrapper svg {
+    font-size: 1.25rem;
   }
 
   .linkName {
-    font-size: 0.9rem;
+    font-size: 0.75rem;
   }
 
   .linkHint {
-    font-size: 0.75rem;
+    font-size: 0.65rem;
   }
 }
