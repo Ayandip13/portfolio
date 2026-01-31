@@ -63,7 +63,6 @@ I focus on writing readable code, solving real problems, and creating experience
     { name: 'TypeScript', category: 'Mobile' as const, proficiency: 50, icon: 'SiTypescript' },
     { name: 'React', category: 'Frontend' as const, proficiency: 60, icon: 'FaReact' },
     { name: 'Redux-ToolKit', category: 'Mobile' as const, proficiency: 55, icon: 'SiRedux' },
-    { name: 'Zustand', category: 'Mobile' as const, proficiency: 50, icon: 'SiReact' },
     { name: 'Tailwind CSS', category: 'Frontend' as const, proficiency: 50, icon: 'SiTailwindcss' },
     { name: "HTML", category: 'Frontend' as const, proficiency: 60, icon: 'FaHtml5' },
     { name: "CSS", category: 'Frontend' as const, proficiency: 60, icon: 'FaCss3Alt' },
