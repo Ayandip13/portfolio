@@ -1,25 +1,14 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { FaReact, FaVuejs, FaNodeJs, FaPython, FaGitAlt, FaDocker, FaAws, FaFigma, FaApple, FaAndroid } from 'react-icons/fa';
-import { SiTypescript, SiNextdotjs, SiTailwindcss, SiFramer, SiFlutter, SiPostgresql, SiMongodb, SiGraphql, SiFirebase, SiWebpack } from 'react-icons/si';
 import { portfolioData } from '../../data/portfolio';
 import { fadeInUp, staggerContainer } from '../../utils/animations';
 import styles from './About.module.css';
 
-const iconMap: Record<string, any> = {
-    FaReact, FaVuejs, FaNodeJs, FaPython, FaGitAlt, FaDocker, FaAws, FaFigma, FaApple, FaAndroid,
-    SiTypescript, SiNextdotjs, SiTailwindcss, SiFramer, SiFlutter, SiPostgresql, SiMongodb,
-    SiGraphql, SiFirebase, SiWebpack
-};
-
 export const About = () => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: '-100px' });
-    const { about, skills } = portfolioData;
-
-    // Get unique tech stack for display (first 12)
-    const displaySkills = skills.slice(0, 12);
+    const { about } = portfolioData;
 
     return (
         <section className={styles.about} id="about" ref={ref}>
