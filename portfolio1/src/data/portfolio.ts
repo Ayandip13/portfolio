@@ -31,6 +31,7 @@ export interface SocialLink {
   name: string;
   url: string;
   icon: string;
+  label: string;
 }
 
 // Portfolio Data
@@ -141,10 +142,10 @@ I focus on writing readable code, solving real problems, and creating experience
 
   // Social Links
   social: [
-    { name: 'GitHub', url: 'https://github.com/Ayandip13', icon: 'FaGithub' },
-    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/ayandip13/', icon: 'FaLinkedin' },
-    { name: 'Twitter', url: 'https://twitter.com', icon: 'FaTwitter' },
-    { name: 'Email', url: 'mailto:ayandippaul284@gmail.com', icon: 'FaEnvelope' },
+    { name: 'GitHub', url: 'https://github.com/Ayandip13', icon: 'FaGithub', label: 'Follow me' },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/ayandip13/', icon: 'FaLinkedin', label: "Let's connect" },
+    { name: 'Twitter', url: 'https://twitter.com', icon: 'FaTwitter', label: 'Follow me' },
+    { name: 'Email', url: 'mailto:ayandippaul284@gmail.com', icon: 'FaEnvelope', label: 'Contact me' },
   ],
 
   // Contact

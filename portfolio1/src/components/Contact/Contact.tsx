@@ -63,7 +63,7 @@ export const Contact = () => {
                                     </div>
                                     <div className={styles.linkContent}>
                                         <span className={styles.linkName}>{link.name}</span>
-                                        <span className={styles.linkHint}>Follow me</span>
+                                        <span className={styles.linkHint}>{link.label}</span>
                                     </div>
                                 </motion.a>
                             );
