@@ -16,8 +16,42 @@ body {
     color: var(--primary-text-color);
 }
 
-h1 {
-    font-size: 3rem;
+.primary-button {
+    background-color: #2294ed;
+    color: white;
+    border: none;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+}
+
+.top-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 15rem;
+}
+
+.right-div-para {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    width: 35rem;
+    margin-bottom: 1rem;
+}
+
+.right-div {
+    margin-left: 15rem;
+    margin-top: 10rem;
+
+}
+
+.primary-button:hover {
+    background-color: #b6dfff;
+    color: #000;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
 }
 
 h2 {
@@ -32,10 +66,94 @@ p {
     font-family: 'Roboto', sans-serif;
     color: var(--secondary-text-color);
     line-height: 1.4;
-    font-size: 1.8rem;
+    font-size: 1rem;
 }
 
 a {
     text-decoration: none;
     display: inline-block;
+}
+
+.companies-section {
+    margin-top: 5rem;
+    margin-left: 15rem;
+    margin-right: 15rem;
+}
+
+.small-bold-text {
+    font-size: 1.3rem;
+    font-weight: 700;
+    background-color: #2294ed;
+    text-align: center;
+    padding: 10px;
+    color: white;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-left: 15rem;
+    margin-top: 1rem;
+}
+
+.nav-links {
+    display: flex;
+    margin-left: 15rem;
+}
+
+.sign-in {
+    margin-left: 5rem;
+    background-color: white;
+    color: #000;
+    border: 1px solid #2294ed;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+}
+
+.sign-in:hover {
+    background-color: #bbe2ff;
+    color: #000;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.sign-up {
+    margin-left: 2rem;
+    background-color: #2294ed;
+    color: white;
+    border: none;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+}
+
+.sign-up:hover {
+    background-color: #b6dfff;
+    color: #000;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.hover-link {
+    margin-top: 1rem;
+    font-size: 1rem;
+    margin-left: 4rem;
+}
+
+.hover-link:hover {
+    color: var(--primary-text-color);
+    cursor: pointer;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 10rem;
+    /* justify-content: space-between; */
 }
