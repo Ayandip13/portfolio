@@ -49,10 +49,10 @@ export const portfolioData = {
 
   // About Section
   about: {
-    bio: `I’m a software developer who enjoys building clean, simple, and user-friendly applications. I like turning ideas into real products using modern mobile and web technologies.
+    bio: `I’m a software developer who enjoys building clean, simple, and user-friendly applications. I like turning ideas into real products using cross platform technology like React Native.
 
 I focus on writing readable code, solving real problems, and creating experiences that feel smooth and intuitive for users.`,
-    avatar: '/avatar.png', // Placeholder - will be generated
+    avatar: '../assets/avatar.jpg', // Placeholder - will be generated
   },
 
   // Skills
