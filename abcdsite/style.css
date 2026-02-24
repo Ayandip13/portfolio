@@ -54,6 +54,34 @@ body {
     transition: 0.3s ease-in-out;
 }
 
+.secondary-button {
+    background-color: white;
+    color: #2294ed;
+    border: 1px solid #2294ed;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+}
+
+.secondary-button:hover {
+    background-color: #b6dfff;
+    color: #000;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-left: 15rem;
+    margin-right: 15rem;
+    align-items: center;
+    justify-items: center;
+}
+
 h2 {
     font-size: 2rem;
 }
@@ -133,7 +161,7 @@ a {
 .sign-in {
     margin-left: 5rem;
     background-color: white;
-    color: #000;
+    color: #2294ed;
     border: 1px solid #2294ed;
     padding-left: 15px;
     padding-right: 15px;
