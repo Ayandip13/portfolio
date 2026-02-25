@@ -72,6 +72,15 @@ body {
     transition: 0.3s ease-in-out;
 }
 
+.big-feature-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 15rem;
+    margin-left: 15rem;
+    margin-top: 10rem;
+}
+
 .features-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
