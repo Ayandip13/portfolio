@@ -1,8 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import { ArrowLeft, MapPin } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import L from 'leaflet';
 
@@ -38,7 +36,6 @@ const MapPage = () => {
             const parsedData = JSON.parse(cachedData);
             const locations = parsedData.map((emp: any) => {
                 const city = emp.employee_city || 'New York';
-                // If city not in map, generate random offset around New York for demo variety
                 const coords = cityCoordinates[city] || [
                     40.7128 + (Math.random() - 0.5) * 5,
                     -74.0060 + (Math.random() - 0.5) * 5
@@ -56,29 +53,29 @@ const MapPage = () => {
     }, []);
 
     return (
-        <div className="container">
+        <div className="container" style={{ padding: '20px' }}>
             <button
                 onClick={() => navigate('/list')}
-                style={{ background: 'transparent', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '2rem', padding: '0', color: 'var(--text-secondary)' }}
+                style={{
+                    background: 'none',
+                    border: 'none',
+                    color: 'var(--primary-color)',
+                    textAlign: 'left',
+                    padding: 0,
+                    marginBottom: '20px',
+                    width: 'auto',
+                    textDecoration: 'underline'
+                }}
             >
-                <ArrowLeft size={18} />
-                Back to Dashboard
+                &larr; Back to Dashboard
             </button>
 
-            <div style={{ marginBottom: '3rem' }}>
-                <h1 style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <MapPin size={32} color="var(--primary)" />
-                    Employee Locations
-                </h1>
-                <p style={{ color: 'var(--text-secondary)' }}>Global distribution of our team</p>
+            <div style={{ marginBottom: '20px' }}>
+                <h1 style={{ margin: 0 }}>Employee Locations</h1>
+                <p style={{ color: '#666' }}>Geographic distribution of our staff</p>
             </div>
 
-            <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="glass"
-                style={{ height: '600px', overflow: 'hidden', border: '1px solid var(--glass-border)' }}
-            >
+            <div className="card" style={{ height: '500px', overflow: 'hidden', padding: 0 }}>
                 <MapContainer
                     {...({
                         center: [20, 0],
@@ -89,30 +86,32 @@ const MapPage = () => {
                 >
                     <TileLayer
                         {...({
-                            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-                            url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                            url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         } as any)}
                     />
                     {markers.map((marker, idx) => (
                         <Marker key={`${marker.id}-${idx}`} position={marker.coords as any}>
                             <Popup>
-                                <div style={{ padding: '8px', minWidth: '150px' }}>
-                                    <h3 style={{ margin: '0 0 4px', fontSize: '1rem', color: '#1e1b4b' }}>{marker.name}</h3>
-                                    <p style={{ margin: '0 0 4px', fontSize: '0.8rem', color: '#475569' }}>{marker.position}</p>
-                                    <p style={{ margin: '0', fontSize: '0.8rem', fontWeight: 'bold' }}>📍 {marker.city}</p>
+                                <div style={{ minWidth: '150px' }}>
+                                    <h4 style={{ margin: '0 0 5px' }}>{marker.name}</h4>
+                                    <p style={{ margin: '0 0 5px', fontSize: '13px' }}>{marker.position}</p>
+                                    <p style={{ margin: '0', fontSize: '12px', color: '#666' }}>City: {marker.city}</p>
                                 </div>
                             </Popup>
                         </Marker>
                     ))}
                 </MapContainer>
-            </motion.div>
+            </div>
 
-            <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                <div className="glass p-3 px-6" style={{ fontSize: '0.9rem' }}>
-                    🌍 Total Regions: <strong>{new Set(markers.map(m => m.city)).size}</strong>
+            <div style={{ marginTop: '20px', display: 'flex', gap: '20px' }}>
+                <div className="card" style={{ flex: 1, textAlign: 'center', padding: '15px' }}>
+                    <span style={{ fontSize: '14px', color: '#888' }}>Total Regions</span>
+                    <div style={{ fontSize: '20px', fontWeight: 'bold' }}>{new Set(markers.map(m => m.city)).size}</div>
                 </div>
-                <div className="glass p-3 px-6" style={{ fontSize: '0.9rem' }}>
-                    👥 Total Employees: <strong>{markers.length}</strong>
+                <div className="card" style={{ flex: 1, textAlign: 'center', padding: '15px' }}>
+                    <span style={{ fontSize: '14px', color: '#888' }}>Total Employees</span>
+                    <div style={{ fontSize: '20px', fontWeight: 'bold' }}>{markers.length}</div>
                 </div>
             </div>
         </div>

@@ -1,6 +1,4 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Download, ArrowLeft, CheckCircle } from 'lucide-react';
 
 const PhotoResult = () => {
     const location = useLocation();
@@ -10,9 +8,9 @@ const PhotoResult = () => {
 
     if (!image) {
         return (
-            <div className="container" style={{ textAlign: 'center', padding: '10rem' }}>
-                <h2>No photo captured</h2>
-                <button onClick={() => navigate('/list')} style={{ marginTop: '2rem' }}>Back to List</button>
+            <div className="container" style={{ textAlign: 'center', padding: '50px' }}>
+                <h2>No photo found.</h2>
+                <button onClick={() => navigate('/list')} style={{ width: 'auto' }}>Go back to list</button>
             </div>
         );
     }
@@ -20,60 +18,56 @@ const PhotoResult = () => {
     const handleDownload = () => {
         const link = document.createElement('a');
         link.href = image;
-        link.download = `photo_${itemName || 'capture'}.png`;
+        link.download = `verification_${itemName || 'photo'}.png`;
         link.click();
     };
 
     return (
-        <div className="container" style={{ maxWidth: '600px', textAlign: 'center' }}>
+        <div className="container" style={{ maxWidth: '500px', textAlign: 'center', padding: '20px' }}>
             <button
                 onClick={() => navigate(-1)}
-                style={{ background: 'transparent', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '2rem', padding: '0', color: 'var(--text-secondary)' }}
+                style={{
+                    background: 'none',
+                    border: 'none',
+                    color: 'var(--primary-color)',
+                    textAlign: 'left',
+                    padding: 0,
+                    marginBottom: '20px',
+                    width: 'auto',
+                    textDecoration: 'underline'
+                }}
             >
-                <ArrowLeft size={18} />
-                Retake Photo
+                &larr; Retake Photo
             </button>
 
-            <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                className="glass p-6"
-            >
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', color: '#10b981', marginBottom: '1.5rem' }}>
-                    <CheckCircle size={20} />
-                    <span style={{ fontWeight: '600' }}>Photo Captured Successfully</span>
+            <div className="card">
+                <div style={{ color: '#28a745', fontWeight: 'bold', marginBottom: '15px' }}>
+                    Photo Captured Successfully!
                 </div>
 
-                <div style={{ position: 'relative', marginBottom: '2rem', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.4)' }}>
+                <div style={{ marginBottom: '20px', border: '1px solid #ddd', padding: '10px', borderRadius: '4px' }}>
                     <img
                         src={image}
                         alt="Captured"
-                        style={{ width: '100%', display: 'block' }}
+                        style={{ width: '100%', borderRadius: '4px' }}
                     />
                 </div>
 
                 {itemName && (
-                    <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>
-                        Verified for: <strong style={{ color: 'white' }}>{itemName}</strong>
+                    <p style={{ marginBottom: '20px' }}>
+                        Verification for: <strong>{itemName}</strong>
                     </p>
                 )}
 
-                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-                    <button
-                        onClick={handleDownload}
-                        style={{ background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', display: 'flex', alignItems: 'center', gap: '8px' }}
-                    >
-                        <Download size={18} />
-                        Download
+                <div style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
+                    <button onClick={handleDownload} style={{ width: 'auto', backgroundColor: '#6c757d' }}>
+                        Download Photo
                     </button>
-                    <button
-                        onClick={() => navigate('/list')}
-                        style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
-                    >
-                        Back to Dashboard
+                    <button onClick={() => navigate('/list')} style={{ width: 'auto' }}>
+                        Back to List
                     </button>
                 </div>
-            </motion.div>
+            </div>
         </div>
     );
 };

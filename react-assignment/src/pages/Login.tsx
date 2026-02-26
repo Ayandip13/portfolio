@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { motion } from 'framer-motion';
-import { LogIn, User, Lock, AlertCircle } from 'lucide-react';
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -13,98 +11,68 @@ const Login = () => {
     const { login } = useAuth();
     const navigate = useNavigate();
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setError('');
         setIsLoading(true);
 
-        // Simulate small delay for premium feel
-        setTimeout(() => {
-            if (login(username, password)) {
-                navigate('/list');
-            } else {
-                setError('Invalid username or password');
-            }
-            setIsLoading(false);
-        }, 800);
+        // Simple login logic
+        if (login(username, password)) {
+            navigate('/list');
+        } else {
+            setError('Invalid username or password. Try username "testuser" and password "Test123"');
+        }
+        setIsLoading(false);
     };
 
     return (
-        <div className="flex items-center justify-center min-vh-100 p-6" style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="glass p-8 w-100 max-w-sm"
-                style={{ width: '500px', padding: '2rem' }}
-            >
-                <div className="text-center mb-8">
-                    <h1 className="text-2xl font-bold">Welcome Back</h1>
-                    <p style={{ color: 'var(--text-secondary)' }}>Log in to your account to continue</p>
-                </div>
+        <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '100vh',
+            padding: '20px'
+        }}>
+            <div className="card" style={{ width: '100%', maxWidth: '400px' }}>
+                <h1 style={{ textAlign: 'center' }}>Login</h1>
+                <p style={{ textAlign: 'center', color: '#666', marginBottom: '20px' }}>
+                    Please enter your credentials to log in.
+                </p>
 
-                <form onSubmit={handleSubmit} className="space-y-4">
-                    <div style={{ marginBottom: '1rem' }}>
-                        <label className="block text-sm font-medium mb-1" style={{ display: 'block', marginBottom: '0.5rem' }}>Username</label>
-                        <div style={{ position: 'relative' }}>
-                            <User
-                                size={18}
-                                style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-secondary)' }}
-                            />
-                            <input
-                                type="text"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                                placeholder="testuser"
-                                required
-                                style={{ paddingLeft: '40px' }}
-                            />
-                        </div>
+                {error && <div className="error-message">{error}</div>}
+
+                <form onSubmit={handleSubmit}>
+                    <div style={{ marginBottom: '15px' }}>
+                        <label>Username</label>
+                        <input
+                            type="text"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            placeholder="Enter username"
+                            required
+                        />
                     </div>
 
-                    <div style={{ marginBottom: '1.5rem' }}>
-                        <label className="block text-sm font-medium mb-1" style={{ display: 'block', marginBottom: '0.5rem' }}>Password</label>
-                        <div style={{ position: 'relative' }}>
-                            <Lock
-                                size={18}
-                                style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-secondary)' }}
-                            />
-                            <input
-                                type="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                placeholder="••••••••"
-                                required
-                                style={{ paddingLeft: '40px' }}
-                            />
-                        </div>
+                    <div style={{ marginBottom: '20px' }}>
+                        <label>Password</label>
+                        <input
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="Enter password"
+                            required
+                        />
                     </div>
 
-                    {error && (
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            className="p-3 mb-4 rounded-lg flex items-center gap-2"
-                            style={{ background: 'rgba(244, 63, 94, 0.1)', color: 'var(--accent)', borderRadius: '8px', padding: '0.75rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}
-                        >
-                            <AlertCircle size={18} />
-                            <span className="text-sm">{error}</span>
-                        </motion.div>
-                    )}
-
-                    <button
-                        type="submit"
-                        className="w-100 py-3"
-                        disabled={isLoading}
-                        style={{ width: '100%', padding: '0.75rem' }}
-                    >
-                        {isLoading ? 'Signing in...' : 'Sign In'}
+                    <button type="submit" disabled={isLoading}>
+                        {isLoading ? 'Logging in...' : 'Login'}
                     </button>
                 </form>
 
-                <div className="mt-8 text-center text-sm" style={{ marginTop: '2rem', textAlign: 'center', fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
-                    <p>Don't have an account? <span style={{ color: 'var(--primary)', cursor: 'pointer' }}>Sign up</span></p>
+                <div style={{ marginTop: '20px', textAlign: 'center' }}>
+                    <p>Don't have an account? <span style={{ color: 'var(--primary-color)', cursor: 'pointer' }}>Sign up</span></p>
                 </div>
-            </motion.div>
+            </div>
         </div>
     );
 };

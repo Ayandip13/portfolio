@@ -1,31 +1,18 @@
 import { useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import {
-    ArrowLeft,
-    Camera,
-    MapPin,
-    Briefcase,
-    DollarSign,
-    Mail,
-    Smartphone,
-    Calendar
-} from 'lucide-react';
 
 const Details = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    // const { id } = useParams();
     const fileInputRef = useRef<HTMLInputElement>(null);
 
-    // Get item from location state or fallback (in a real app, fetch by ID if not in state)
     const item = location.state?.item;
 
     if (!item) {
         return (
-            <div className="container" style={{ textAlign: 'center', padding: '10rem' }}>
-                <h2>Item not found</h2>
-                <button onClick={() => navigate('/list')} style={{ marginTop: '2rem' }}>Go Back</button>
+            <div className="container" style={{ textAlign: 'center', padding: '50px' }}>
+                <h2>Employee record not found</h2>
+                <button onClick={() => navigate('/list')} style={{ width: 'auto' }}>Go Back to List</button>
             </div>
         );
     }
@@ -47,80 +34,67 @@ const Details = () => {
     };
 
     return (
-        <div className="container" style={{ maxWidth: '800px' }}>
+        <div className="container" style={{ maxWidth: '600px', padding: '20px' }}>
             <button
                 onClick={() => navigate('/list')}
-                style={{ background: 'transparent', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '2rem', padding: '0', color: 'var(--text-secondary)' }}
+                style={{
+                    background: 'none',
+                    border: 'none',
+                    color: 'var(--primary-color)',
+                    textAlign: 'left',
+                    padding: 0,
+                    marginBottom: '20px',
+                    width: 'auto',
+                    textDecoration: 'underline'
+                }}
             >
-                <ArrowLeft size={18} />
-                Back to List
+                &larr; Back to Employee List
             </button>
 
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="glass p-8"
-            >
-                <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', marginBottom: '3rem' }}>
-                    <div
-                        style={{ width: '120px', height: '120px', background: 'linear-gradient(135deg, var(--primary), var(--accent))', borderRadius: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '3rem', fontWeight: 'bold' }}
-                    >
+            <div className="card">
+                <div style={{ textAlign: 'center', marginBottom: '30px' }}>
+                    <div style={{
+                        width: '100px',
+                        height: '100px',
+                        backgroundColor: '#ddd',
+                        borderRadius: '50%',
+                        margin: '0 auto 15px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: '40px',
+                        fontWeight: 'bold',
+                        color: '#666'
+                    }}>
                         {item.employee_name?.charAt(0)}
                     </div>
-                    <div style={{ flex: 1 }}>
-                        <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>{item.employee_name}</h1>
-                        <div style={{ display: 'flex', gap: '1rem', color: 'var(--text-secondary)', flexWrap: 'wrap' }}>
-                            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                                <Briefcase size={16} />
-                                {item.employee_position}
-                            </span>
-                            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                                <MapPin size={16} />
-                                {item.employee_city || 'Remote'}
-                            </span>
-                        </div>
+                    <h1 style={{ margin: 0 }}>{item.employee_name}</h1>
+                    <p style={{ color: '#666', fontSize: '18px' }}>{item.employee_position}</p>
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '30px' }}>
+                    <div style={{ border: '1px solid #eee', padding: '15px', borderRadius: '8px' }}>
+                        <span style={{ fontSize: '14px', color: '#888' }}>Salary</span>
+                        <div style={{ fontSize: '18px', fontWeight: 'bold' }}>${item.employee_salary}</div>
+                    </div>
+                    <div style={{ border: '1px solid #eee', padding: '15px', borderRadius: '8px' }}>
+                        <span style={{ fontSize: '14px', color: '#888' }}>Age</span>
+                        <div style={{ fontSize: '18px', fontWeight: 'bold' }}>{item.employee_age} Years</div>
+                    </div>
+                    <div style={{ border: '1px solid #eee', padding: '15px', borderRadius: '8px' }}>
+                        <span style={{ fontSize: '14px', color: '#888' }}>City</span>
+                        <div style={{ fontSize: '18px', fontWeight: 'bold' }}>{item.employee_city || 'N/A'}</div>
+                    </div>
+                    <div style={{ border: '1px solid #eee', padding: '15px', borderRadius: '8px' }}>
+                        <span style={{ fontSize: '14px', color: '#888' }}>Verification</span>
+                        <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#28a745' }}>Active</div>
                     </div>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
-                    <div className="glass p-4" style={{ background: 'rgba(255,255,255,0.02)' }}>
-                        <span style={{ color: 'var(--text-secondary)', fontSize: '0.8rem', display: 'block', marginBottom: '0.5rem' }}>Salary (Annual)</span>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '1.25rem', fontWeight: 'bold', color: '#10b981' }}>
-                            <DollarSign size={20} />
-                            {Number(item.employee_salary).toLocaleString()}
-                        </div>
-                    </div>
-                    <div className="glass p-4" style={{ background: 'rgba(255,255,255,0.02)' }}>
-                        <span style={{ color: 'var(--text-secondary)', fontSize: '0.8rem', display: 'block', marginBottom: '0.5rem' }}>Experience</span>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '1.25rem', fontWeight: 'bold' }}>
-                            <Calendar size={20} />
-                            {item.employee_age || 'N/A'} Years
-                        </div>
-                    </div>
-                    <div className="glass p-4" style={{ background: 'rgba(255,255,255,0.02)' }}>
-                        <span style={{ color: 'var(--text-secondary)', fontSize: '0.8rem', display: 'block', marginBottom: '0.5rem' }}>Email Address</span>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '1rem' }}>
-                            <Mail size={18} />
-                            {item.employee_name?.toLowerCase().replace(' ', '.')}@company.com
-                        </div>
-                    </div>
-                    <div className="glass p-4" style={{ background: 'rgba(255,255,255,0.02)' }}>
-                        <span style={{ color: 'var(--text-secondary)', fontSize: '0.8rem', display: 'block', marginBottom: '0.5rem' }}>Phone</span>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '1rem' }}>
-                            <Smartphone size={18} />
-                            +1 (555) 123-4567
-                        </div>
-                    </div>
-                </div>
-
-                <div style={{ borderTop: '1px solid var(--glass-border)', paddingTop: '2.5rem', textAlign: 'center' }}>
-                    <p style={{ marginBottom: '1.5rem', color: 'var(--text-secondary)' }}>Capture a photo for employee verification</p>
-                    <button
-                        onClick={handleCaptureClick}
-                        style={{ padding: '1rem 2.5rem', borderRadius: '50px', display: 'flex', alignItems: 'center', gap: '12px', margin: '0 auto' }}
-                    >
-                        <Camera size={24} />
-                        Capture Photo
+                <div style={{ borderTop: '1px solid #eee', paddingTop: '20px', textAlign: 'center' }}>
+                    <p style={{ marginBottom: '15px' }}>Take a picture to verify identifying information</p>
+                    <button onClick={handleCaptureClick} style={{ width: 'auto' }}>
+                        Capture Verification Photo
                     </button>
                     <input
                         type="file"
@@ -131,7 +105,7 @@ const Details = () => {
                         style={{ display: 'none' }}
                     />
                 </div>
-            </motion.div>
+            </div>
         </div>
     );
 };
